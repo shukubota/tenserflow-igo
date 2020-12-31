@@ -1,0 +1,17 @@
+version: "2"
+
+# docker-syncのための設定
+volumes:
+  tensorflow-sync-volume:
+    external: true
+# docker-syncのための設定
+
+services:
+  app:
+    volumes:
+      - tensorflow-sync-volume:/var/work
+    image: tensorflow/tensorflow
+    ports:
+      - "8000:8000"
+    build: .
+    tty: true
